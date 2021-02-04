@@ -1,6 +1,6 @@
-from tkinter import *
-import csv
-import datetime
+from tkinter import * #tkinter is being used to create the GUI for this application
+import csv #the output will be in csv format for ease of use by the end user. I was trying to use a xlsx format, however could not identify the correct code to create a suitable output.
+import datetime #used to add the output for the current date and time to "timestamp" the output
 
 def enter_button():
     now = datetime.datetime.now()

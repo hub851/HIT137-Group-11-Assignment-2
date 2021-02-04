@@ -1,6 +1,11 @@
-from tkinter import * #tkinter is being used to create the GUI for this application
-import csv #the output will be in csv format for ease of use by the end user. I was trying to use a xlsx format, however could not identify the correct code to create a suitable output.
-import datetime #used to add the output for the current date and time to "timestamp" the output
+from tkinter import *
+#tkinter is being used to create the GUI for this application
+import csv
+#the output will be in csv format for ease of use by the end user.
+#I was trying to use a xlsx format, however could not identify the
+#correct code to create a suitable output.
+import datetime
+#used to add the output for the current date and time to "timestamp" the output
 
 def enter_button():
     now = datetime.datetime.now()
@@ -9,12 +14,21 @@ def enter_button():
     BIN = e3.get()
     Location = e4.get()
     QTY = e5.get()
-    with open('File.csv', 'a') as f:
+    with open('File.csv', 'wb') as f:
         w = csv.writer(f,dialect='excel-tab')
-        w.writerow([now.strftime("%Y-%m-%d %H:%M"), SKU, Description, BIN, Location, QTY]) #need to separate this by cols
+        header_columns = (['Date/Time', 'SKU', "Description", "BIN", "Location", "QTY"])
+        writer = csv.DictWriter(f, header_columns, delimiter=',')
+        #w.writeheader()
+        w.writerow(["Date/Time", "SKU", "Description", "BIN", "Location", "QTY"])
+        w.writerow([now.strftime("%Y-%m-%d %H:%M"),
+        SKU, Description, BIN, Location, QTY])
+
+        #need to separate this by cols
     #for row in w:
         #output.append(row.split(','))
-
+        """with open("File.csv", "r") as f:
+            for line in f:
+                print line,"""
 
 window=Tk()
 window.title("Inventory Input")

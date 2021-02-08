@@ -14,22 +14,14 @@ def enter_button():
     BIN = e3.get()
     Location = e4.get()
     QTY = e5.get()
-    with open('File.csv', 'wb') as f:
+    with open('File.csv', 'w') as f:
         w = csv.writer(f,dialect='excel-tab')
         header_columns = (['Date/Time', 'SKU', "Description", "BIN", "Location", "QTY"])
-        writer = csv.DictWriter(f, header_columns, delimiter=',')
+        writer = csv.DictWriter(f, header_columns, delimiter=',', quoting = csv.QUOTE_ALL)
         #w.writeheader()
         w.writerow(["Date/Time", "SKU", "Description", "BIN", "Location", "QTY"])
         w.writerow([now.strftime("%Y-%m-%d %H:%M"),
         SKU, Description, BIN, Location, QTY])
-
-        #need to separate this by cols
-    #for row in w:
-        #output.append(row.split(','))
-        """with open("File.csv", "r") as f:
-            for line in f:
-                print line,"""
-
 window=Tk()
 window.title("Inventory Input")
 

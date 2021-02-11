@@ -6,6 +6,7 @@ import csv
 #correct code to create a suitable output.
 import datetime
 #used to add the output for the current date and time to "timestamp" the output
+#This is so that the user can identify when the inputs were entered.
 
 def enter_button():
     now = datetime.datetime.now()
@@ -24,7 +25,6 @@ def enter_button():
         SKU, Description, BIN, Location, QTY])
 window=Tk()
 window.title("Inventory Input")
-
 
 Label(window, text='SKU').grid(row=0)
 e1 = Entry(window)
